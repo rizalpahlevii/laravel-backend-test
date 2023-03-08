@@ -5,6 +5,7 @@ namespace App\Http\Controllers\API;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Product\{CreateProductRequest, UpdateProductRequest};
 use App\Http\Resources\ProductResource;
+use App\Models\CategoryProduct;
 use App\Models\Product;
 use App\Models\ProductImage;
 use App\Services\ImageUploadService;
@@ -51,11 +52,13 @@ class ProductController extends Controller
         $product = Product::create($input);
 
         $image = $this->imageUploadService->handle($file);
-        $product->image()->create([
+        ProductImage::create([
+            'product_id' => $product->id,
             'image_id' => $image->id,
         ]);
 
-        $product->category()->create([
+        CategoryProduct::create([
+            'product_id' => $product->id,
             'category_id' => $input['category_id'],
         ]);
 

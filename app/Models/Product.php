@@ -13,6 +13,12 @@ class Product extends Model
 
     public $timestamps = false;
 
+    protected $fillable = [
+        'name',
+        'description',
+        'enable'
+    ];
+
     protected static function boot()
     {
         parent::boot();

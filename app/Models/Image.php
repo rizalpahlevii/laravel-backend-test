@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Image extends Model
 {
@@ -11,7 +12,13 @@ class Image extends Model
 
     public $timestamps = false;
 
-    public function products(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
+    protected $fillable = [
+        'name',
+        'file',
+        'enable'
+    ];
+
+    public function products(): BelongsToMany
     {
         return $this->belongsToMany(Product::class, 'product_images', 'image_id', 'product_id');
     }

@@ -2,7 +2,9 @@
 
 namespace App\Observers;
 
+use App\Models\CategoryProduct;
 use App\Models\Product;
+use App\Models\ProductImage;
 
 class ProductObserver
 {
@@ -27,8 +29,14 @@ class ProductObserver
      */
     public function deleted(Product $product): void
     {
-        $product->image()->delete();
-        $product->category()->delete();
+        $image = $product->image;
+        $category = $product->category;
+
+        $image->delete();
+        $category->delete();
+
+        ProductImage::where('product_id', $product->id)->delete();
+        CategoryProduct::where('product_id', $product->id)->delete();
     }
 
     /**
