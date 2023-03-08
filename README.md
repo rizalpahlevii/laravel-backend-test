@@ -16,11 +16,13 @@
 git clone https://github.com/rizalpahlevii/laravel-backend-test
 cd laravel-backend-test
 composer install
+cp .env.example .env
 ```
 
 2. Setting the database configuration, open .env file at project root directory
 
 ```
+APP_URL=**your_url**
 DB_DATABASE=**your_db_name**
 DB_USERNAME=**your_db_user**
 DB_PASSWORD=**password**
@@ -29,6 +31,7 @@ DB_PASSWORD=**password**
 3. Clear cache, generate APP KEY, insert dummy data
 
 ```bash
+php artisan storage:link
 php artisan config:cache
 php artisan key:generate
 php artisan migrate --seed
