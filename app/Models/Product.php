@@ -11,6 +11,8 @@ class Product extends Model
 {
     use HasFactory;
 
+    public $timestamps = false;
+
     public function image(): HasOneThrough
     {
         return $this->hasOneThrough(Image::class, ProductImage::class, 'product_id', 'id', 'id', 'image_id');
