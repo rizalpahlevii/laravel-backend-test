@@ -14,7 +14,6 @@ return new class extends Migration
         Schema::create('category_products', function (Blueprint $table) {
             $table->integer('category_id')->index();
             $table->integer('product_id')->index();
-            $table->timestamps();
         });
     }
 
