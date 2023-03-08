@@ -31,5 +31,10 @@ DB_PASSWORD=**password**
 ```bash
 php artisan config:cache
 php artisan key:generate
-php artisan migrate --seed
+php artisan migrate --seed********
 ```
+
+## API Documentation
+
+- <a href="docs/product.md">Product API</a>
+- <a href="docs/product.md">Product API</a>
