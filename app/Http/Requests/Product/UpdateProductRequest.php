@@ -27,7 +27,7 @@ class UpdateProductRequest extends FormRequest
             'description' => ['required', 'max:255', 'string'],
             'enable' => ['required', 'boolean'],
             'category_id' => ['required', Rule::exists('categories', 'id')],
-            'image' => ['required', 'image', 'mimes:jpeg,png,jpg,gif,svg', 'max:2048']
+            'image' => ['nullable', 'image', 'mimes:jpeg,png,jpg,gif,svg', 'max:2048']
         ];
     }
 }

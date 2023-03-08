@@ -23,6 +23,7 @@ class ProductResource extends JsonResource
             'name' => $this->name,
             'description' => $this->description,
             'enable' => $this->enable,
+            'enable_description' => $this->enable_description,
         ];
 
         if ($this->relationLoaded('category')) {

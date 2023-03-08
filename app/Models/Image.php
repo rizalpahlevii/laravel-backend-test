@@ -29,4 +29,9 @@ class Image extends Model
         // Get full url from domain to file
         return Storage::disk('public')->url('images/' . $this->file);
     }
+
+    public function getEnableDescriptionAttribute(): string
+    {
+        return $this->enable ? 'Active' : 'Inactive';
+    }
 }

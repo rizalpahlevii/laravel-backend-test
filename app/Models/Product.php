@@ -34,4 +34,9 @@ class Product extends Model
     {
         return $this->hasOneThrough(Category::class, CategoryProduct::class, 'product_id', 'id', 'id', 'category_id');
     }
+
+    public function getEnableDescriptionAttribute(): string
+    {
+        return $this->enable ? 'Active' : 'Inactive';
+    }
 }

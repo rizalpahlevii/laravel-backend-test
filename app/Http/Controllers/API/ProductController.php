@@ -94,13 +94,14 @@ class ProductController extends Controller
         if ($product) {
             $product = tap($product)->update($input);
 
-            $productImage = ProductImage::whereProductId($product->id)->first();
-            $image = $this->imageUploadService->handle($request->file('image'), $productImage->image);
-
-            $product->image()->update([
-                'image_id' => $image->id,
-            ]);
-
+            if ($request->hasFile('image')) {
+                $productImage = ProductImage::whereProductId($product->id)->first();
+                $image = $this->imageUploadService->handle($request->file('image'), $productImage->image);
+                $product->image()->update([
+                    'image_id' => $image->id,
+                ]);
+            }
+            
             $product->category()->update([
                 'category_id' => $input['category_id'],
             ]);

@@ -24,6 +24,7 @@ class ImageResource extends JsonResource
             'file' => $this->file,
             'image_url' => $this->image_url,
             'enable' => $this->enable,
+            'enable_description' => $this->enable_description,
         ];
     }
 }

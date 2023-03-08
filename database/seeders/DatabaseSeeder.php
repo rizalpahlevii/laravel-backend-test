@@ -20,17 +20,17 @@ class DatabaseSeeder extends Seeder
         $categories = Category::factory()->count(5)->create();
 
         $categories->each(function ($category) {
-            $products = Product::factory()->count(5)->create();
+            $products = Product::factory()->count(3)->create();
             $products->each(function ($product) use ($category) {
                 CategoryProduct::factory()->create([
                     'category_id' => $category->id,
                     'product_id' => $product->id,
                 ]);
-                ProductImage::factory()->count(5)
+                ProductImage::factory()
                     ->for(Image::factory()->create())
                     ->create([
-                    'product_id' => $product->id,
-                ]);
+                        'product_id' => $product->id,
+                    ]);
             });
         });
     }
